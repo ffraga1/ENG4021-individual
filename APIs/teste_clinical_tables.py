@@ -3,40 +3,39 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 
 
-termo = input("Digite uma condição médica em inglês: ")
+busca = input("Digite uma condição médica em inglês: ")
 
-parametros = urlencode({
-    "terms": termo,
+filtros = {
+    "terms": busca,
     "maxList": 10,
     "df": "consumer_name,primary_name",
     "ef": "icd10cm_codes"
-})
+}
 
-url = f"https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?{parametros}"
+link = "https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?"
+link += urlencode(filtros)
 
 try:
-    with urlopen(url, timeout=15) as resposta:
-        dados = json.loads(resposta.read().decode("utf-8"))
+    resposta = urlopen(link)
+    dados = json.loads(resposta.read().decode())
 
-    nomes = dados[3]
-    codigos = dados[2].get("icd10cm_codes", [])
+    condicoes = dados[3]
+    codigos = dados[2]["icd10cm_codes"]
 
-    if not nomes:
-        print("\nNenhuma condição foi encontrada.")
-    else:
-        print("\nResultados encontrados:\n")
+    if len(condicoes) == 0:
+        print("Nenhuma condição foi encontrada.")
 
-        for posicao, nomes_condicao in enumerate(nomes):
-            nome = nomes_condicao[0]
-            codigo = (
-                codigos[posicao]
-                if posicao < len(codigos) and codigos[posicao]
-                else "Não informado"
-            )
+    for i in range(len(condicoes)):
+        nome = condicoes[i][0]
 
-            print(f"Condição: {nome}")
-            print(f"Código sugerido: {codigo}")
-            print()
+        if i < len(codigos) and codigos[i]:
+            codigo = codigos[i]
+        else:
+            codigo = "Não informado"
 
-except Exception as erro:
-    print(f"Não foi possível consultar a API: {erro}")
+        print()
+        print("Condição:", nome)
+        print("Código sugerido:", codigo)
+
+except Exception:
+    print("Não foi possível consultar a API.")
