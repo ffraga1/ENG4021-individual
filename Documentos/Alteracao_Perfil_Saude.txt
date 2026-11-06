@@ -1,6 +1,5 @@
 Alteração do perfil de saúde
 
-Nesta atividade, alterei as informações do perfil de saúde pelo MedMap e salvei as mudanças. Depois, conferi o mesmo perfil no Django Admin e confirmei que os novos dados foram atualizados corretamente no banco de dados.
 
 Documento com os registros da atividade:
 https://docs.google.com/document/d/1xAu7eo-kPjzW4f_u3DieuQO-QMOdP2TPixp2W8ecris/edit?usp=sharing
