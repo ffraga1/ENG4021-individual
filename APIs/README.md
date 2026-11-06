@@ -1,13 +1,11 @@
 # Teste da Clinical Tables API
 
-Nesta atividade, testei uma API gratuita que permite pesquisar condições médicas. O programa pede que o usuário digite uma condição em inglês, envia a pesquisa para a Clinical Tables API e apresenta os nomes e códigos sugeridos encontrados.
+O código pede que o usuário digite uma condição médica em inglês, envia a pesquisa para a API e mostra os nomes e códigos sugeridos encontrados. Caso não existam resultados ou ocorra algum problema na consulta, o programa apresenta uma mensagem informando o que aconteceu.
 
-Esse teste é importante para o MedMap porque mostra uma forma de organizar melhor os nomes das condições registradas no histórico familiar. A API não exige conta ou credenciais e o código utiliza apenas recursos do próprio Python.
-
-Para executar:
+Para executar o teste:
 
 ```bash
 python APIs/teste_clinical_tables.py
 ```
 
-Quando o programa solicitar uma condição, pode ser utilizado o termo `diabetes`.
+Quando o programa solicitar uma condição, pode ser digitado o termo `diabetes`. O resultado esperado é uma lista com as condições encontradas e seus códigos sugeridos.
