@@ -9,3 +9,7 @@ python APIs/teste_clinical_tables.py
 
 
 Quando o programa solicitar uma condição, pode ser digitado o termo `diabetes`. O resultado esperado é uma lista com as condições encontradas e seus códigos sugeridos.
+
+# resumo do código
+
+O código recebe o nome de uma condição médica digitada pelo usuário, envia essa informação para a Clinical Tables API e apresenta os nomes e códigos sugeridos encontrados. Caso não existam resultados ou ocorra algum problema na consulta, o programa informa ao usuário.
